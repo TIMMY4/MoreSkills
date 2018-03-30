@@ -45,7 +45,6 @@ public class MoreSkillBuilding {
                         newList.set(i + 1, first);
 
                     }
-                    //System.out.println(randomList.get(i));
 
                 }
 
