@@ -6,7 +6,6 @@
 package moreskillbuilding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,24 +61,14 @@ public class MoreSkillBuilding {
     public static void main(String[] args) {
         Random rand = new Random();
         Map<Integer, List<Integer>> map = new HashMap<>();
-        ArrayList<Integer> newList = new ArrayList();
-        ArrayList<Integer> list1 = new ArrayList();
-        ArrayList<Integer> list2 = new ArrayList();
-        ArrayList<Integer> list3 = new ArrayList();
-        ArrayList<Integer> list4 = new ArrayList();
-        ArrayList<Integer> list5 = new ArrayList();
-        ArrayList<Integer> list6 = new ArrayList();
-        ArrayList<Integer> list7 = new ArrayList();
-        ArrayList<Integer> list8 = new ArrayList();
-        ArrayList<Integer> list9 = new ArrayList();
-        ArrayList<Integer> list10 = new ArrayList();
         int r = rand.nextInt(max) + 1;
         System.out.println("Pick a number between 1 and 1,000");
         Scanner input = new Scanner(System.in);
-        int guess = 0;//input.nextInt();
+        int guess =0;// input.nextInt();
         int guesses = 1;
         int time = 0;
         int bin = 0;
+        List<Integer> newList = map.getOrDefault(guess/100, new ArrayList());
         do {
             double start = System.currentTimeMillis();
             if (guess < r) {
@@ -94,148 +83,17 @@ public class MoreSkillBuilding {
             double end = System.currentTimeMillis();
             time += (end - start);
             bin = (guess - 1) / (100);
-            switch (bin) {
-                case 0:
-                    list1.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list1);
-                    newList.add(guess);
-                    break;
-                case 1:
-
-                    list2.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list2);
-                    newList.add(guess);
-                    break;
-                case 2:
-
-                    list3.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list3);
-                    newList.add(guess);
-                    break;
-                case 3:
-
-                    list4.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list4);
-                    newList.add(guess);
-                    break;
-                case 4:
-
-                    list5.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list5);
-                    newList.add(guess);
-                    break;
-                case 5:
-
-                    list6.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list6);
-                    newList.add(guess);
-                    break;
-                case 6:
-
-                    list7.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list7);
-                    newList.add(guess);
-                    break;
-                case 7:
-
-                    list8.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list8);
-                    newList.add(guess);
-                    break;
-                case 8:
-
-                    list9.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list9);
-                    newList.add(guess);
-                    break;
-                case 9:
-                    list10.add(guess);
-                    newList.add(guess);
-                    map.put(bin, list10);
-                    newList.add(guess);
-                    break;
-            }
+          List<Integer> otherList=map.getOrDefault(bin, new ArrayList());
+           newList.add(guess);
+           otherList.add(guess);
+           map.put(bin, otherList);
 
         } while (guess != r);
-        switch (bin) {
-            case 0:
+        sort(newList);
+       
+        
+        
 
-                list1.add(guess);
-                newList.add(guess);
-                map.put(bin, list1);
-                newList.add(guess);
-                break;
-            case 1:
-
-                list2.add(guess);
-                newList.add(guess);
-                map.put(bin, list2);
-                newList.add(guess);
-                break;
-            case 2:
-
-                list3.add(guess);
-                newList.add(guess);
-                map.put(bin, list3);
-                newList.add(guess);
-                break;
-            case 3:
-
-                list4.add(guess);
-                newList.add(guess);
-                map.put(bin, list4);
-                newList.add(guess);
-                break;
-            case 4:
-
-                list5.add(guess);
-                newList.add(guess);
-                map.put(bin, list5);
-                break;
-            case 5:
-
-                list6.add(guess);
-                newList.add(guess);
-                map.put(bin, list6);
-                newList.add(guess);
-                break;
-            case 6:
-
-                list7.add(guess);
-                newList.add(guess);
-                map.put(bin, list7);
-                newList.add(guess);
-                break;
-            case 7:
-
-                list8.add(guess);
-                newList.add(guess);
-                map.put(bin, list8);
-                newList.add(guess);
-                break;
-            case 8:
-
-                list9.add(guess);
-                newList.add(guess);
-                map.put(bin, list9);
-                newList.add(guess);
-                break;
-            case 9:
-                list10.add(guess);
-                newList.add(guess);
-                map.put(bin, list10);
-                newList.add(guess);
-                break;
-        }
         System.out.println("Correct");
         System.out.println("Number of guesses " + guesses);
         System.out.println("average time in seconds: " + time / (1000 * guesses));
@@ -276,13 +134,12 @@ public class MoreSkillBuilding {
         }
         int x = 0;
         double avg = 0;
-                for(int i=0; i<newList.size(); i++){
-                    x+= newList.get(i);
-                }
-                avg= x/(newList.size());
-                System.out.println("The average is: "+avg);
-            
-        
+        for (int i = 0; i < newList.size(); i++) {
+            x += newList.get(i);
+        }
+        avg = x / (newList.size());
+        System.out.println("The average is: " + avg);
+
         //gets average 
         int sum = 0;
         int totalLength = 0;
