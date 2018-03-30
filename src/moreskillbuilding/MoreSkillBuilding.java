@@ -63,7 +63,7 @@ public class MoreSkillBuilding {
         int r = rand.nextInt(max) + 1;
         System.out.println("Pick a number between 1 and 1,000");
         Scanner input = new Scanner(System.in);
-        int guess =0;// input.nextInt();
+        int guess = input.nextInt();
         int guesses = 1;
         int time = 0;
         int bin = 0;
@@ -72,13 +72,13 @@ public class MoreSkillBuilding {
             double start = System.currentTimeMillis();
             if (guess < r) {
                 System.out.println("Guess higher than " + guess);
-                guess = numbGuess(guess, true);
+                //guess = numbGuess(guess, true);
             } else if (guess > r) {
                 System.out.println("Guess lower than " + guess);
-                guess = numbGuess(guess, false);
+              //  guess = numbGuess(guess, false);
             }
             guesses++;
-            //guess = input.nextInt();
+            guess = input.nextInt();
             double end = System.currentTimeMillis();
             time += (end - start);
             bin = (guess - 1) / (100);
